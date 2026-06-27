@@ -1,6 +1,9 @@
 ---
 // import Navigation to Header
 import Navigation from "./Navigation.astro";
+// import Menu for mobile use
+import Menu from "./Menu.astro";
+
 const pageTitle = "";
 ---
 
@@ -17,6 +20,7 @@ const pageTitle = "";
     <body>
         <header>
             <nav>
+                <Menu />
                 <Navigation />
             </nav>
         </header>
