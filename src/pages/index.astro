@@ -1,32 +1,14 @@
 ---
-// import global CSS
-import "../styles/global.css";
-// import Header w/ in Navi Component
-import Header from "../components/Header.astro";
-// import Footer Component
-import Footer from "../components/Footer.astro";
-
-// --- Metadata ---
-// page title
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Home Page";
 ---
 
-<h1>PortJourney - {pageTitle}</h1>
+<BaseLayout pageTitle={pageTitle}>
+	<h2>My awesome blog subtitle</h2>
 
-<!-- 
-- Header using Custom HTML Elements
-- Updated from using Route style links
--->
-<Header />
-
-<h2>Lastest Post</h2>
-<ul>
-	<li><a href="/posts/post-1/">Post 1</a></li>
-	<li><a href="/posts/post-2/">Post 2</a></li>
-	<li><a href="/posts/post-3/">Post 3</a></li>
-</ul>
-<Footer />
-
-<script>
-	import "../scripts/menu.js";
-</script>
+	<ul>
+		<li><a href="/posts/post-1/">Post 1</a></li>
+		<li><a href="/posts/post-2/">Post 2</a></li>
+		<li><a href="/posts/post-3/">Post 3</a></li>
+	</ul>
+</BaseLayout>

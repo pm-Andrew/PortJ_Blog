@@ -3,26 +3,11 @@
 import Navigation from "./Navigation.astro";
 // import Menu for mobile use
 import Menu from "./Menu.astro";
-
-const pageTitle = "";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{pageTitle}</title>
-    </head>
-
-    <body>
-        <header>
-            <nav>
-                <Menu />
-                <Navigation />
-            </nav>
-        </header>
-    </body>
-</html>
+<header>
+    <nav>
+        <Menu />
+        <Navigation />
+    </nav>
+</header>

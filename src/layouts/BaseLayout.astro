@@ -1,0 +1,49 @@
+---
+// import global CSS
+import "../styles/global.css";
+// import Header w/ in Navi Component
+import Header from "../components/Header.astro";
+// import Footer Component
+import Footer from "../components/Footer.astro";
+
+// --- Metadata ---
+// page title via props <BaseLayout pageTitle={pageTitle}>
+const { pageTitle } = Astro.props;
+
+// This is to create a uniform layout throughout the website hince 'BaseLayout'
+
+//Delete anything from each individual page that is now being handled by the layout, including:
+// *  HTML elements
+// *  Components and their imports
+// *  CSS rules in a <style> tag (e.g. <h1> in your About page)
+// * <script> tags
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>{pageTitle}</title>
+    </head>
+    <body>
+        <Header />
+        <h1>PortJourney - {pageTitle}</h1>
+        <!-- 
+The <slot /> allows you to inject (or “slot in”) child content 
+written between opening and closing <Component></Component> tags to 
+any Component.astro file.
+-->
+        <slot />
+        <!-- 
+- Header using Custom HTML Elements
+- Updated from using Route style links
+-->
+        <Footer />
+
+        <script>
+            import "../scripts/menu.js";
+        </script>
+    </body>
+</html>
