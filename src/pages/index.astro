@@ -1,5 +1,14 @@
 ---
+// import global CSS
+import "../styles/global.css";
+// import Navi Component
+import Navigation from "../components/Navigation.astro";
+// import Footer Component
+import Footer from "../components/Footer.astro";
 
+// --- Metadata ---
+// page title
+const pageTitle = "Home Page";
 ---
 
 <html lang="en">
@@ -9,15 +18,26 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<h1>PortJourney - Blog</h1>
+		<h1>PortJourney - {pageTitle}</h1>
+
 		<!-- Navigation | Routes -->
-		<a href="/">Home</a>
+		<!-- <a href="/">Home</a> -->
 		<!-- Route to /About -->
-		<a href="/about">About</a>
+		<!-- <a href="/about">About</a> -->
 		<!-- Route to /Blog -->
-		<a href="/blog">Blog</a>
+		<!-- <a href="/blog">Blog</a> -->
+		<!-- // Navigation Component -->
+		<Navigation />
+
+		<h2>Lastest Post</h2>
+		<ul>
+			<li><a href="/posts/post-1/">Post 1</a></li>
+			<li><a href="/posts/post-2/">Post 2</a></li>
+			<li><a href="/posts/post-3/">Post 3</a></li>
+		</ul>
+		<Footer />
 	</body>
 </html>
