@@ -1,32 +1,18 @@
 ---
 // variables to link site and username
-const platform = "github";
-const username = "pm-Andrew";
-const platform2 = "linkedin";
-const username2 = "andrewsabourin";
+import Social from "./Social.astro";
 ---
 
-<footer>
-    <p>
-        Learn more about my projects on <a
-            href={`https://www.${platform}.com/${username}`}>{platform}</a
-        >!
-    </p>
-    <p>
-        Reach me on <a href={`https://www.${platform2}.com/${username2}`}
-            >{platform2}</a
-        >!
-    </p>
-</footer>
-
 <style>
-    p {
-        margin: 12px 8px;
-        padding: 5px 10px;
-        display: inline;
-    }
     footer {
-        border: 1px solid black;
-        padding: 15px;
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
     }
 </style>
+
+<footer>
+    <Social platform="linkedin" username="andrewsabourin" />
+    <Social platform="github" username="pm-Andrew" />
+    <Social platform="youtube" username="Fireship" />
+</footer>

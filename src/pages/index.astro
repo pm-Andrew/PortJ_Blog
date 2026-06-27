@@ -1,8 +1,8 @@
 ---
 // import global CSS
 import "../styles/global.css";
-// import Navi Component
-import Navigation from "../components/Navigation.astro";
+// import Header w/ in Navi Component
+import Header from "../components/Header.astro";
 // import Footer Component
 import Footer from "../components/Footer.astro";
 
@@ -11,33 +11,18 @@ import Footer from "../components/Footer.astro";
 const pageTitle = "Home Page";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-		<h1>PortJourney - {pageTitle}</h1>
+<h1>PortJourney - {pageTitle}</h1>
 
-		<!-- Navigation | Routes -->
-		<!-- <a href="/">Home</a> -->
-		<!-- Route to /About -->
-		<!-- <a href="/about">About</a> -->
-		<!-- Route to /Blog -->
-		<!-- <a href="/blog">Blog</a> -->
-		<!-- // Navigation Component -->
-		<Navigation />
+<!-- 
+- Header using Custom HTML Elements
+- Updated from using Route style links
+-->
+<Header />
 
-		<h2>Lastest Post</h2>
-		<ul>
-			<li><a href="/posts/post-1/">Post 1</a></li>
-			<li><a href="/posts/post-2/">Post 2</a></li>
-			<li><a href="/posts/post-3/">Post 3</a></li>
-		</ul>
-		<Footer />
-	</body>
-</html>
+<h2>Lastest Post</h2>
+<ul>
+	<li><a href="/posts/post-1/">Post 1</a></li>
+	<li><a href="/posts/post-2/">Post 2</a></li>
+	<li><a href="/posts/post-3/">Post 3</a></li>
+</ul>
+<Footer />
