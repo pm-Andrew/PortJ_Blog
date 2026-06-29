@@ -7,6 +7,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 // to return information about all your Markdown files.
 // import.meta.glob() will return an array of objects, one for each blog post.
+// ie grabbing data from Mardown files
 const allPosts = Object.values(
     import.meta.glob("./posts/*.md", { eager: true }),
 );
