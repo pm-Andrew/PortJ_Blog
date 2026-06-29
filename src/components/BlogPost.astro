@@ -1,0 +1,6 @@
+---
+// using a astro.props grab title and url from posts and create links in a
+const { title, url } = Astro.props;
+---
+
+<li><a href={url}>{title}</a></li>
