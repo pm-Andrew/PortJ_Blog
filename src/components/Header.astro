@@ -3,11 +3,23 @@
 import Navigation from "./Navigation.astro";
 // import Menu for mobile use
 import Menu from "./Menu.astro";
+// import icon for light/dark mode
+import ThemeIcon from "./ThemeIcon.astro";
 ---
 
 <header>
     <nav>
-        <Menu />
+        <div>
+            <ThemeIcon />
+            <Menu />
+        </div>
         <Navigation />
     </nav>
 </header>
+
+<style>
+    div {
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
