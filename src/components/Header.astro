@@ -5,21 +5,51 @@ import Navigation from "./Navigation.astro";
 import Menu from "./Menu.astro";
 // import icon for light/dark mode
 import ThemeIcon from "./ThemeIcon.astro";
+// social import
+import Social from "./Social.astro";
 ---
 
 <header>
     <nav>
-        <div>
-            <ThemeIcon />
-            <Menu />
-        </div>
+        <h1 class="logo">PortJourney</h1>
         <Navigation />
+        <Social platform="github" username="pm-Andrew" />
+        <div>
+            <Menu />
+            <ThemeIcon />
+        </div>
     </nav>
 </header>
 
 <style>
-    div {
+    header {
+        margin: 0;
+        padding: 0 1em;
+        box-shadow: 0 2px 8px rgba(var(--Void), 5%);
+        border: 3px solid #cb2928;
+    }
+    h2 {
+        margin: 0;
+        font-size: 1em;
+    }
+
+    nav {
         display: flex;
-        justify-content: space-between;
+        align-items: center;
+        justify-content: start;
+    }
+    nav-links {
+        /* padding: 0.75em 0.25em; */
+        /* border-bottom: 4px solid transparent; */
+        text-decoration: none;
+    }
+    .social-links,
+    .social-links a {
+        display: flex;
+    }
+    @media (max-width: 720px) {
+        .social-links {
+            display: none;
+        }
     }
 </style>

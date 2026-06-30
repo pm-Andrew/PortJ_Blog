@@ -2,13 +2,14 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 // Import Greeting Component
 import Greeting from "../components/Greeting";
+import Hero from "../components/Hero.astro";
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
 	<!-- Example of a non-hydrated component -->
 	<!-- <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} /> -->
 	<!-- Example of a hydrated component -->
-	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+	<!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
+	<Hero />
 </BaseLayout>

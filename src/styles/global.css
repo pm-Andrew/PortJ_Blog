@@ -1,14 +1,76 @@
+/* 
+This will need to be refactored into a theme.css once this grows
+*/
+:root {
+  --tengu-red: #cb2928;
+  --sumi-black: #0d0d0d;
+  --paper-white: #f3f5f8;
+  --mountain-navy: #2e4a7a;
+  --deep-lacquer: #8b1a1a;
+  --void: #9f1033;
+  --night-indigo: #1b2a4a;
+  --mist: #e8edf5;
+/* Light (Main) Theme of Blog 
+--- Primary Colors Light --- 
+  Core brand colors — logo, headlines, backgrounds, and key UI surfaces
+  TenguRed |#cb2928| == Brand Anchor CTAs Logo
+  SumiBlack |#0d0d0d| == Nav Headers Body Text
+  PaperWhte |#f3f5f8| == Backgrounds & Light Surfaces
+  --- Secondary Colors Light ---
+  Depth and refinement — dark UI surfaces, cards, and hover states
+  NightIndigo |#1b2a4a| == Dark Sections Footers
+  MountainNavy |#2e4a7a| == Tags, Secondary Buttons
+  Mist |#e8edf5| == Subtle bg & dividers
+  --- Accent Colors Light --- 
+  For depth and contrast — hover states, borders, shadow details
+  DeepLacquer |#8b1a1a| == Hover States & Borders
+  Void |#9f1033| == Deepest dark shadows
+  */
+
+  --background: var(--paper-white);
+  --foreground: var(--sumi-black);
+  --card: #ffffff;
+  --card-foreground: #0d0d0d;
+  --popover: #ffffff;
+  --popover-foreground: #0d0d0d;
+  --primary: var(--tengu-red);
+  --primary-foreground: #ffffff;
+  --secondary: var(--mountain-navy);
+  --secondary-foreground: #ffffff;
+  --muted: var(--mist);
+  --muted-foreground: #5c5c6e;
+  --accent: var(--deep-lacquer);
+  --accent-foreground: #ffffff;
+  --destructive: var(--void);
+  --destructive-foreground: #ffffff;
+  --border: rgba(203, 41, 40, 0.18);
+  --input: rgba(203, 41, 40, 0.12);
+  --input-background: var(--mist);
+  --switch-background: var(--mist);
+  --ring: var(--tengu-red);
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0d0d0d;
+  --sidebar-primary: #cb2928;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: var(--mist);
+  --sidebar-accent-foreground: #0d0d0d;
+  --sidebar-border: rgba(203, 41, 40, 0.18);
+  --sidebar-ring: #cb2928;
+}
+
 html {
-  background-color: #f1f5f9;
+  background-color: var(--background);
   font-family: sans-serif;
+  color: var(--foreground);
 }
 
 body {
   margin: 0 auto;
   width: 100%;
-  max-width: 80ch;
+  max-width: 180ch;
   padding: 1rem;
   line-height: 1.5;
+  border: 3px dashed #cb2928;
 }
 
 * {
@@ -20,7 +82,11 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* nav styles */
+/* "Logo" Styling or two tone text*/
+.logo {
+  color: var(--primary);
+}
+
 /* nav styles */
 .menu {
   background-color: #0d0950;
@@ -34,41 +100,44 @@ h1 {
 .nav-links {
   width: 100%;
   display: none;
-  margin: 0;
-}
+  /* margin: 1em; */
+  }
 
 .nav-links a {
   display: block;
   text-align: center;
-  padding: 10px 0;
+  /* padding: 8px 2px; */
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
-  text-transform: uppercase;
-  color: #0d0950;
+  color: var(--foreground);
 }
 
 .nav-links a:hover,
 .nav-links a:focus{
-  background-color: #ff9776;
+  background-color: var(--mist);
+  color: var(--mountain-navy);
+  border: 4px solid var(--mist);
+  border-radius: 12px;
 }
 
 :has(.menu[aria-expanded="true"]) .nav-links {
   display: unset;
 }
 
+/* Media Queries */
 @media screen and (min-width: 636px) {
   .nav-links {
-    margin-left: 5em;
+    margin: 1.5em;
     display: block;
     position: static;
-    width: auto;
+    width: 100%;
     background: none;
   }
 
   .nav-links a {
     display: inline-block;
-    padding: 15px 20px;
+    padding: .42em .72em;
   }
 
   .menu {

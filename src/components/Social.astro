@@ -8,7 +8,51 @@ const { platform, username } = Astro.props;
     a {
         padding: 0.5rem 1rem;
         color: white;
-        background-color: #4c1d95;
+        background-color: var(--primary);
+        border-radius: 0.35em;
         text-decoration: none;
     }
 </style>
+
+<!-- Refactor Me to this Blog -->
+
+<!-- <div class="flex gap-6 justify-center">
+    <a href="https://github.com/pm-Andrew" target="_blank" class="group">
+        <img
+            src={githubDefault.src}
+            alt="GitHub invertocat"
+            height="38"
+            width="38"
+            class="group-hover:hidden rounded-full"
+        />
+        <img
+            src={githubHover.src}
+            alt="GitHub invertocat"
+            height="38"
+            width="38"
+            class="hidden group-hover:block rounded-full"
+        />
+    </a>
+    <a
+        href="https://linkedin.com/andrewsabourin"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group"
+        aria-label="LinkedIn"
+    >
+        <img
+            src={linkedinDefault.src}
+            alt="Linkedin Blue Square"
+            height="38"
+            width="38"
+            class="group-hover:hidden rounded-full"
+        />
+        <img
+            src={linkedinHover.src}
+            alt="Linkedin Blue Circle"
+            height="38"
+            width="38"
+            class="hidden group-hover:block rounded"
+        />
+    </a>
+</div> -->
