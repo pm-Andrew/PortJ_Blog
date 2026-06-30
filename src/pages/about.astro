@@ -7,27 +7,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 // page title
 const pageTitle = "About Me";
 
-// metadata - JS expressions
-const identity = {
-    firstName: "Andrew",
-    country: "US",
-    occupation: "Tutor/ Student",
-    hobbies: ["Cooking", "Disc Golf", "Anime", "Fishing"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
-// conditional rendering elements
-const happy = true;
-const finished = true;
-const goal = 3;
-
 // CSS Variable
 const skillColor = "crimson";
 const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
+<!-- This is using the CSS variables above to style .skill -->
 <style define:vars={{ skillColor, fontWeight, textCase }}>
     .skill {
         color: var(--skillColor);
@@ -37,7 +23,18 @@ const textCase = "uppercase";
 </style>
 
 <BaseLayout pageTitle={pageTitle}>
-    <h2>Here are a few facts about me:</h2>
+    <h2>Portfolio + Journey = <span class="logo">PortJourney</span></h2>
+    <p>
+        My attempt to link my experience from my time as a Ironworker Apprentice
+        & running Milling equipment, and mixing it with the journey from my
+        experience into Web Development, Computer Science, and being a student
+        during the AI era.
+    </p>
+</BaseLayout>
+
+<!-- 
+Example of using the CSS variable in .skill
+<h3>Here are a few facts about me:</h3>
 
     <ul>
         <li>My name is {identity.firstName}.</li>
@@ -67,4 +64,4 @@ const textCase = "uppercase";
             <p>My goal is not 3 days</p>
         )
     }
-</BaseLayout>
+-->

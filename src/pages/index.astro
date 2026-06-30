@@ -1,9 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-// Import Greeting Component
-import Greeting from "../components/Greeting";
+// // Import Greeting Component
+// import Greeting from "../components/Greeting";
+// Hero
 import Hero from "../components/Hero.astro";
-const pageTitle = "Home Page";
+// // Recent Posts
+import RecentPost from "../components/RecentPost.astro";
+const pageTitle = "Blog";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
@@ -12,4 +15,11 @@ const pageTitle = "Home Page";
 	<!-- Example of a hydrated component -->
 	<!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> -->
 	<Hero />
+	<RecentPost />
 </BaseLayout>
+
+<!-- === TODO ===
+* Create a Component that shows recent post
+* Find was to refactor
+* Image gallery? How to include projects/ learning?
+-->
