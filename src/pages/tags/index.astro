@@ -1,15 +1,8 @@
 ---
-// layout
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-// grabbing data from Mardown files
-const allPosts = Object.values(
-    import.meta.glob("../posts/*.md", { eager: true }),
-);
-// pulling from files tag array
-const tags = [
-    ...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat()),
-];
-// pageTitle
+const allPosts = await getCollection("blog");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 const pageTitle = "Tag Index";
 ---
 

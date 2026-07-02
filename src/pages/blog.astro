@@ -1,16 +1,14 @@
 ---
+// Import Collection
+import { getCollection } from "astro:content";
 // import global CSS
 import "../styles/global.css";
 // using a BaseLayout for
 import BaseLayout from "../layouts/BaseLayout.astro";
 // import BlogPost component
 import BlogPost from "../components/BlogPost.astro";
-// to return information about all your Markdown files.
-// import.meta.glob() will return an array of objects, one for each blog post.
-// ie grabbing data from Mardown files
-const allPosts = Object.values(
-    import.meta.glob("./posts/*.md", { eager: true }),
-);
+// Collection in /blog.
+const allPosts = await getCollection("blog");
 // --- Metadata ---
 // page title
 const pageTitle = "Blog";
@@ -27,8 +25,9 @@ const pageTitle = "Blog";
             by mapping over the array returned by import.meta.glob().
         -->
         {
-            allPosts.map((post: any) => (
-                <BlogPost url={post.url} title={post.frontmatter.title} />
+            allPosts.map((post) => (
+                // This generates input for [...slug].astro
+                <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
             ))
         }
     </ul>
