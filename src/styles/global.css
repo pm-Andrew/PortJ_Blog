@@ -70,7 +70,7 @@ body {
   max-width: 180ch;
   padding: 1rem;
   line-height: 1.5;
-  border: 3px dashed #cb2928;
+  /* border: 3px dashed #cb2928; */
 }
 
 * {
@@ -87,7 +87,9 @@ h1 {
   color: var(--primary);
 }
 
-/* nav styles */
+/* 
+  nav styles for mobile screens
+*/
 .menu {
   background-color: #0d0950;
   border: none;
@@ -100,13 +102,13 @@ h1 {
 .nav-links {
   width: 100%;
   display: none;
-  /* margin: 1em; */
+  margin: 1em;
   }
 
 .nav-links a {
   display: block;
   text-align: center;
-  /* padding: 8px 2px; */
+  padding: 8px 2px;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
@@ -117,15 +119,17 @@ h1 {
 .nav-links a:focus{
   background-color: var(--mist);
   color: var(--mountain-navy);
-  border: 4px solid var(--mist);
-  border-radius: 12px;
+  /* border: 4px solid var(--mist); */
+  /* border-radius: 12px; */
 }
 
 :has(.menu[aria-expanded="true"]) .nav-links {
   display: unset;
 }
 
-/* Media Queries */
+/* 
+Media Queries | Desktop
+*/
 @media screen and (min-width: 636px) {
   .nav-links {
     margin: 1.5em;
@@ -144,9 +148,11 @@ h1 {
     display: none;
   }
 }
-
+/* 
+  Dark Theme Styling
+*/
 html.dark {
-  background-color: #0d0950;
+  background-color: var(--sumi-black);
   color: #fff;
 }
 
@@ -167,3 +173,4 @@ html.dark {
 .dark a {
   color: #ff9776;
 }
+

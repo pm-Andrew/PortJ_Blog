@@ -14,20 +14,17 @@ import Social from "./Social.astro";
         <!-- Put a logo or something here -->
         <!-- <h1 class="logo">PortJourney</h1> -->
         <Navigation />
-        <Social platform="github" username="pm-Andrew" />
-        <div>
-            <Menu />
-            <ThemeIcon />
-        </div>
+                <Menu />
+        <ThemeIcon />
     </nav>
 </header>
 
 <style>
     header {
         margin: 0;
-        padding: 0 1em;
+        padding: .5em 1em;
         box-shadow: 0 2px 8px rgba(var(--Void), 5%);
-        border: 3px solid #cb2928;
+        border-bottom: 3px solid #cb2928;
     }
     h2 {
         margin: 0;
@@ -35,22 +32,29 @@ import Social from "./Social.astro";
     }
 
     nav {
+        margin-left: 10px ;
         display: flex;
         align-items: center;
         justify-content: start;
     }
     nav-links {
-        /* padding: 0.75em 0.25em; */
-        /* border-bottom: 4px solid transparent; */
         text-decoration: none;
     }
     .social-links,
     .social-links a {
         display: flex;
+        justify-content: center;
     }
+    /* // Hiding menu @ Screen-size 720px */
     @media (max-width: 720px) {
         .social-links {
             display: none;
         }
+    }
+    /* Format the nav below screen 720px */
+    /* @media (min-width: 350px) (max-width: 719px) {
+        header {
+            border: 3px dashed var(--Void);
+        } */
     }
 </style>
