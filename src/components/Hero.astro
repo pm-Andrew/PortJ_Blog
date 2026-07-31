@@ -1,10 +1,23 @@
 ---
 // import global CSS
 import "../styles/global.css";
+// Images
+import { Image } from "astro:assets";
 ---
 
-<h2>Welcome to <span class="logo">PortJourney!</span></h2>
-<p>
-    A place where I go into more detail of my journey as a Web Devloper and
-    Computer Science Student.
-</p>
+<div class="hero">
+    <h2>Welcome to <span class="logo">PortJourney!</span></h2>
+    <p>
+        A place where I go into more detail of my journey as a Web Devloper and
+        Computer Science Student.
+    </p>
+</div>
+
+<style>
+    .hero {
+        margin: 2em;
+        padding: 2em;
+        /* background-color: var(--primary); */
+        border: 2px solid var(--primary);
+    }
+</style>
