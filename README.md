@@ -1,5 +1,7 @@
 # PortJourney Blog
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/219e2f47-a439-4c64-8d73-7e5663976ac4/deploy-status)](https://app.netlify.com/projects/portjblog/deploys)
+
 > Made from following [Astro Blog Tutorial](https://docs.astro.build/en/tutorial/0-introduction/). </br>
 > Hosted by [Netlify](https://docs.netlify.com/).
 
