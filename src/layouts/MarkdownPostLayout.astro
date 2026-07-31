@@ -1,40 +1,66 @@
 ---
 import { Image } from "astro:assets";
-// Creating a layout wrapper
 import BaseLayout from "./BaseLayout.astro";
+
+// Extract frontmatter safely from Astro.props. Use optional chaining so
+// missing frontmatter doesn't crash the prerender step on Netlify.
 const { frontmatter } = Astro.props;
+
+// Convert publication date to a Date object (or null) for safe formatting.
+const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-    <div class="">
-        <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-        <p><em>{frontmatter.description}</em></p>
-        <p>Written by: {frontmatter.author}</p>
+<BaseLayout pageTitle={frontmatter?.title ?? "Blog"}>
+    <!-- Render image only when present to avoid runtime errors -->
+    {
+        frontmatter?.image?.url ? (
+            <img
+                src={frontmatter.image.url}
+                width="300"
+                alt={frontmatter.image?.alt ?? ""}
+            />
+        ) : null
+    }
+
+    <div>
+        <!-- Show formatted date if available -->
+        <p>{pubDate ? pubDate.toLocaleDateString() : ""}</p>
+
+        <!-- Optional description and author -->
+        {
+            frontmatter?.description ? (
+                <p>
+                    <em>{frontmatter.description}</em>
+                </p>
+            ) : null
+        }
+        {frontmatter?.author ? <p>Written by: {frontmatter.author}</p> : null}
     </div>
 
-    <div class="tags">
-        {
-            frontmatter.tags.map((tag: string) => (
-                <p class="tag">
-                    <a href={`/tags/${tag}`}>{tag}</a>
-                </p>
-            ))
-        }
-    </div>
+    <!-- Tags: render only when an array with items exists -->
+    {
+        Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? (
+            <div class="tags">
+                {frontmatter.tags.map((tag: string) => (
+                    <p class="tag">
+                        <a href={`/tags/${tag}`}>{tag}</a>
+                    </p>
+                ))}
+            </div>
+        ) : null
+    }
 
     <slot />
 </BaseLayout>
+
 <style>
     a {
         color: #00539f;
     }
-
     .tags {
         display: flex;
         flex-wrap: wrap;
     }
-
     .tag {
         margin: 0.25em;
         border: dotted 1px #a1a1a1;
