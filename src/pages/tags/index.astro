@@ -1,8 +1,17 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const allPosts = await getCollection("blog");
-const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+// Use a glob that targets the `src/blog` Markdown files so we read actual posts.
+// The previous path pointed at a different location which yielded no posts.
+const allPosts = Object.values(
+    import.meta.glob("../../blog/*.md", { eager: true }),
+);
+// Build the tag list and guard missing `frontmatter.tags` by using optional
+// chaining and defaulting to an empty array so posts without tags don't break.
+const tags = [
+    ...new Set(
+        allPosts.map((post: any) => post.frontmatter?.tags ?? []).flat(),
+    ),
+];
 const pageTitle = "Tag Index";
 ---
 
