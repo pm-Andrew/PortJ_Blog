@@ -40,7 +40,7 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
     }
     {
       frontmatter?.author ? (
-        <p>Written by: {frontmatter.author}</p>
+        <p class="text-(--void)">Written by: {frontmatter.author}</p>
       ) : (
         "Broken or Missing"
       )

@@ -31,18 +31,18 @@ const pageTitle = "Blog";
   <!-- Featured section: show the most recent post in a larger format -->
   {
     featured ? (
-      <section class="featured">
+      <section class="border-2 border-(--accent) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
         <a href={`/posts/${featured.id}/`}>
-          {featured.data?.Image ? (
+          {featured.data?.img ? (
             <Image
-              src={featured.data.Image}
-              alt={featured.data.title ?? ""}
-              class="featured-image"
+              src={featured.data.img.url}
+              alt={featured.data.img.alt}
+              class="border-2 border-(--border) rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
               width={420}
               height={240}
             />
           ) : null}
-          <div class="p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
+          <div class="p-4 m-4">
             <h3>{featured.data?.title}</h3>
             {featured.data?.pubDate ? (
               <p class="date">

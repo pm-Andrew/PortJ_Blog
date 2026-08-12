@@ -7,14 +7,18 @@ const blog = defineCollection({
     // Load Markdown and MDX files in the `src/content/blog/` directory.
     loader: glob({ base: './src/blog', pattern: '**/*.{md,mdx}' }),
     // Type-check frontmatter using a schema
-    schema: ({ image }) =>
+    schema: () =>
         z.object({
             title: z.string(),
+            author: z.string(),
             description: z.string(),
-            // Transform string to Date object
+            img: z.object({
+                url: z.string().url(),
+                alt: z.string(),
+            }).optional(),
             pubDate: z.coerce.date(),
             updatedDate: z.coerce.date().optional(),
-            Image: z.optional(image()),
+            tags: z.array(z.string()).optional(),
         }),
 });
 // Export a single `collections` object to register your collection(s)
