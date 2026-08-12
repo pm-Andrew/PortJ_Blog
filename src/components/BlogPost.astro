@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image as AstroImage } from "astro:assets";
 import { getCollection } from "astro:content";
 //
 import FormattedDate from "./FormattedDate.astro";
@@ -9,27 +9,26 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 // Destructure props for clarity and easier access
-const { title, url, pubDate, description, heroImage } = Astro.props;
+const { title, url, pubDate, description, Image } = Astro.props;
+
+// This is what is shown on the blog page. It is a list of all the posts in the blog collection.
+// Each post is a link to the post page. The post page is generated from the markdown file in the blog collection.
 ---
 
 <section>
   <ul>
     {
       posts.map((post) => (
-        <li class="blogCard">
+        <li class="bg-(--card) border-2 border-(--border) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
           <a href={`/posts/${post.id}/`}>
-            {post.data.heroImage && (
-              <Image
-                width={400}
-                height={350}
-                src={post.data.heroImage}
-                alt=""
-              />
+            {post.data.Image && (
+              <AstroImage width={400} height={350} src={post.data.Image} alt="" />
             )}
-            <h4 class="title">{post.data.title}</h4>
-            <p class="date">
+            <div class="flex items-center justify-between">
+              <h2 class="text-2xl m-2 my-3">{post.data.title}</h2>
+              <p class="text-sm text-(--secondary)" />
               <FormattedDate date={post.data.pubDate} />
-            </p>
+            </div>
             <p class="description">{post.data.description}</p>
           </a>
         </li>
@@ -53,8 +52,6 @@ const { title, url, pubDate, description, heroImage } = Astro.props;
     padding: 1em;
     align-content: center;
     justify-content: baseline;
-    /* TESTING */
-    border: 2px solid var(--accent);
   }
   .blogCard img {
     height: 200px;

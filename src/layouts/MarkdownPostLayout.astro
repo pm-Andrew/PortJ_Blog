@@ -10,13 +10,13 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
 ---
 
 <BaseLayout pageTitle={frontmatter?.title ?? "Blog"}>
-  <!-- Render heroImage only when present to avoid runtime errors -->
+  <!-- Render Image only when present to avoid runtime errors -->
   {
-    frontmatter?.heroImage?.url ? (
+    frontmatter?.Image?.url ? (
       <img
-        src={frontmatter.heroImage.url}
+        src={frontmatter.Image.url}
         width="300"
-        alt={frontmatter.heroImage?.alt ?? ""}
+        alt={frontmatter.Image?.alt ?? ""}
       />
     ) : null
   }

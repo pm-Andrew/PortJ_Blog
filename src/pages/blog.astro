@@ -8,6 +8,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 // import BlogCard component (used to render post previews)
 import BlogCard from "../components/BlogCard.astro";
+
 // Collection in /blog. Gather posts and sort by pubDate (newest first).
 const allPosts = (await getCollection("blog")).sort((a, b) => {
   const aDate = a.data?.pubDate ? new Date(a.data.pubDate).valueOf() : 0;
@@ -32,9 +33,9 @@ const pageTitle = "Blog";
     featured ? (
       <section class="featured">
         <a href={`/posts/${featured.id}/`}>
-          {featured.data?.heroImage ? (
+          {featured.data?.Image ? (
             <Image
-              src={featured.data.heroImage}
+              src={featured.data.Image}
               alt={featured.data.title ?? ""}
               class="featured-image"
               width={420}

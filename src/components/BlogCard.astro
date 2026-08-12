@@ -12,10 +12,10 @@ const data = post?.data ?? {};
     <!-- Render hero image if provided. Use the Image component so both
          string URLs and Astro asset objects are handled. -->
     {
-      data?.heroImage ? (
+      data?.Image ? (
         <Image
           class="card-image"
-          src={data.heroImage}
+          src={data.Image}
           width={200}
           height={120}
           alt={data.title ?? ""}

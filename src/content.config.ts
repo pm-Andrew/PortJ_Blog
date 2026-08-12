@@ -14,7 +14,7 @@ const blog = defineCollection({
             // Transform string to Date object
             pubDate: z.coerce.date(),
             updatedDate: z.coerce.date().optional(),
-            heroImage: z.optional(image()),
+            Image: z.optional(image()),
         }),
 });
 // Export a single `collections` object to register your collection(s)
