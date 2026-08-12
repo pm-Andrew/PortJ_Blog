@@ -28,7 +28,7 @@
   --accent-foreground: #ffffff;
   --destructive: var(--void);
   --destructive-foreground: #ffffff;
-  --border: rgba(203, 41, 40, 0.18);
+  --border: var(--sumi-black);
   --input: rgba(203, 41, 40, 0.12);
   --input-background: var(--mist);
   --switch-background: var(--mist);
