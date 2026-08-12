@@ -1,23 +1,15 @@
 ---
-// import global CSS
-import "../styles/global.css";
-// Images
-import { Image } from "astro:assets";
+
 ---
 
-<div class="hero">
-    <h2>Welcome to <span class="logo">PortJourney!</span></h2>
-    <p>
-        A place where I go into more detail of my journey as a Web Devloper and
-        Computer Science Student.
-    </p>
+<div
+  class="m-8 p-8 text-(--text)-500 font-bold font-mono rounded-2xl bg-linear-0 from-(--accent)/95 from-80% to-(--accent)/75"
+>
+  <h1 class="text-2xl">
+    Welcome to <span class="text-(--mist)">PortJourney!</span>
+  </h1>
+  <p>
+    A place where I share my ideas and what I am working on. <br />
+    I am a Web Developer and Cybersecurity Student.
+  </p>
 </div>
-
-<style>
-    .hero {
-        margin: 2em;
-        padding: 2em;
-        /* background-color: var(--primary); */
-        border: 2px solid var(--primary);
-    }
-</style>

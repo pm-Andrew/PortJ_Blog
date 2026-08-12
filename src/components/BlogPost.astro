@@ -6,60 +6,58 @@ import FormattedDate from "./FormattedDate.astro";
 // using a astro.props grab title and url from posts and create links in a
 // Collection in /blog.
 const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
+// Destructure props for clarity and easier access
 const { title, url, pubDate, description, heroImage } = Astro.props;
 ---
 
-<li><a href={url}>{title}</a></li>
-
 <section>
-    <ul>
-        {
-            posts.map((post) => (
-                <li class="blogCard">
-                    <a href={`/blog/${post.id}/`}>
-                        {post.data.heroImage && (
-                            <Image
-                                width={720}
-                                height={360}
-                                src={post.data.heroImage}
-                                alt=""
-                            />
-                        )}
-                        <h4 class="title">{post.data.title}</h4>
-                        <p class="date">
-                            <FormattedDate date={post.data.pubDate} />
-                        </p>
-                    </a>
-                </li>
-            ))
-        }
-    </ul>
+  <ul>
+    {
+      posts.map((post) => (
+        <li class="blogCard">
+          <a href={`/posts/${post.id}/`}>
+            {post.data.heroImage && (
+              <Image
+                width={400}
+                height={350}
+                src={post.data.heroImage}
+                alt=""
+              />
+            )}
+            <h4 class="title">{post.data.title}</h4>
+            <p class="date">
+              <FormattedDate date={post.data.pubDate} />
+            </p>
+            <p class="description">{post.data.description}</p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </section>
 
 <style>
-    /* Blog Themes */
+  /* Blog Themes */
 
-    .blogCard {
-        margin: 2px;
-        padding: 3px;
-        display: flex;
-        /* justify-content: center; */
-        border: 2px dashed var(--accent);
-    }
+  .blogCard {
+    margin: 2px;
+    padding: 3px;
+    display: flex;
+  }
 
-    .blogCard h4,
-    .blogCard p {
-        margin-left: 3em;
-        align-content: center;
-        justify-content: baseline;
-        /* TESTING */
-        border: 2px solid var(--accent);
-    }
-    .blogCard img {
-        height: 200px;
-        width: 350px;
-    }
+  .blogCard h4,
+  .blogCard p {
+    margin-left: 3em;
+    padding: 1em;
+    align-content: center;
+    justify-content: baseline;
+    /* TESTING */
+    border: 2px solid var(--accent);
+  }
+  .blogCard img {
+    height: 200px;
+    width: 350px;
+  }
 </style>

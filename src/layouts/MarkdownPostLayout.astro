@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 
 // Extract frontmatter safely from Astro.props. Use optional chaining so
@@ -11,62 +10,62 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
 ---
 
 <BaseLayout pageTitle={frontmatter?.title ?? "Blog"}>
-    <!-- Render image only when present to avoid runtime errors -->
+  <!-- Render heroImage only when present to avoid runtime errors -->
+  {
+    frontmatter?.heroImage?.url ? (
+      <img
+        src={frontmatter.heroImage.url}
+        width="300"
+        alt={frontmatter.heroImage?.alt ?? ""}
+      />
+    ) : null
+  }
+
+  <div>
+    <!-- Show formatted date if available -->
+    <p>{pubDate ? pubDate.toLocaleDateString() : ""}</p>
+
+    <!-- Optional description and author -->
     {
-        frontmatter?.image?.url ? (
-            <img
-                src={frontmatter.image.url}
-                width="300"
-                alt={frontmatter.image?.alt ?? ""}
-            />
-        ) : null
+      frontmatter?.description ? (
+        <p>
+          <em>{frontmatter.description}</em>
+        </p>
+      ) : null
     }
+    {frontmatter?.author ? <p>Written by: {frontmatter.author}</p> : null}
+  </div>
 
-    <div>
-        <!-- Show formatted date if available -->
-        <p>{pubDate ? pubDate.toLocaleDateString() : ""}</p>
+  <!-- Tags: render only when an array with items exists -->
+  {
+    Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? (
+      <div class="tags">
+        {frontmatter.tags.map((tag: string) => (
+          <p class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </p>
+        ))}
+      </div>
+    ) : null
+  }
 
-        <!-- Optional description and author -->
-        {
-            frontmatter?.description ? (
-                <p>
-                    <em>{frontmatter.description}</em>
-                </p>
-            ) : null
-        }
-        {frontmatter?.author ? <p>Written by: {frontmatter.author}</p> : null}
-    </div>
-
-    <!-- Tags: render only when an array with items exists -->
-    {
-        Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? (
-            <div class="tags">
-                {frontmatter.tags.map((tag: string) => (
-                    <p class="tag">
-                        <a href={`/tags/${tag}`}>{tag}</a>
-                    </p>
-                ))}
-            </div>
-        ) : null
-    }
-
-    <slot />
+  <slot />
 </BaseLayout>
 
 <style>
-    a {
-        color: #00539f;
-    }
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .tag {
-        margin: 0.25em;
-        border: dotted 1px #a1a1a1;
-        border-radius: 0.5em;
-        padding: 0.5em 1em;
-        font-size: 1.15em;
-        background-color: #f8fcfd;
-    }
+  a {
+    color: #00539f;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.15em;
+    background-color: #f8fcfd;
+  }
 </style>

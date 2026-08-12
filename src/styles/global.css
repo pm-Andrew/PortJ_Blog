@@ -1,6 +1,7 @@
-/* 
-This will need to be refactored into a theme.css once this grows
-*/
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --tengu-red: #cb2928;
   --sumi-black: #0d0d0d;
@@ -10,22 +11,6 @@ This will need to be refactored into a theme.css once this grows
   --void: #9f1033;
   --night-indigo: #1b2a4a;
   --mist: #e8edf5;
-/* Light (Main) Theme of Blog 
---- Primary Colors Light --- 
-  Core brand colors — logo, headlines, backgrounds, and key UI surfaces
-  TenguRed |#cb2928| == Brand Anchor CTAs Logo
-  SumiBlack |#0d0d0d| == Nav Headers Body Text
-  PaperWhte |#f3f5f8| == Backgrounds & Light Surfaces
-  --- Secondary Colors Light ---
-  Depth and refinement — dark UI surfaces, cards, and hover states
-  NightIndigo |#1b2a4a| == Dark Sections Footers
-  MountainNavy |#2e4a7a| == Tags, Secondary Buttons
-  Mist |#e8edf5| == Subtle bg & dividers
-  --- Accent Colors Light --- 
-  For depth and contrast — hover states, borders, shadow details
-  DeepLacquer |#8b1a1a| == Hover States & Borders
-  Void |#9f1033| == Deepest dark shadows
-  */
 
   --background: var(--paper-white);
   --foreground: var(--sumi-black);
@@ -59,118 +44,13 @@ This will need to be refactored into a theme.css once this grows
 }
 
 html {
-  background-color: var(--background);
   font-family: sans-serif;
-  color: var(--foreground);
-}
-
-body {
-  margin: 0 auto;
-  width: 100%;
-  max-width: 180ch;
-  padding: 1rem;
-  line-height: 1.5;
-  /* border: 3px dashed #cb2928; */
 }
 
 * {
   box-sizing: border-box;
 }
 
-h1 {
-  margin: 1rem 0;
-  font-size: 2.5rem;
+a {
+  transition: color 200ms ease-out, background-color 200ms ease-out;
 }
-
-/* "Logo" Styling or two tone text*/
-.logo {
-  color: var(--primary);
-}
-
-/* 
-  nav styles for mobile screens
-*/
-.menu {
-  background-color: #0d0950;
-  border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 5px 10px;
-}
-
-.nav-links {
-  width: 100%;
-  display: none;
-  margin: 1em;
-  }
-
-.nav-links a {
-  display: block;
-  text-align: center;
-  padding: 8px 2px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--foreground);
-}
-
-.nav-links a:hover,
-.nav-links a:focus{
-  background-color: var(--mist);
-  color: var(--mountain-navy);
-  /* border: 4px solid var(--mist); */
-  /* border-radius: 12px; */
-}
-
-:has(.menu[aria-expanded="true"]) .nav-links {
-  display: unset;
-}
-
-/* 
-Media Queries | Desktop
-*/
-@media screen and (min-width: 636px) {
-  .nav-links {
-    margin: 1.5em;
-    display: block;
-    position: static;
-    width: 100%;
-    background: none;
-  }
-
-  .nav-links a {
-    display: inline-block;
-    padding: .42em .72em;
-  }
-
-  .menu {
-    display: none;
-  }
-}
-/* 
-  Dark Theme Styling
-*/
-html.dark {
-  background-color: var(--sumi-black);
-  color: #fff;
-}
-
-.dark .menu {
-  background-color: #fff;
-  color: #000;
-}
-
-.dark .nav-links a:hover,
-.dark .nav-links a:focus {
-  color: #0d0950;
-}
-
-.dark .nav-links a {
-  color: #fff;
-}
-
-.dark a {
-  color: #ff9776;
-}
-

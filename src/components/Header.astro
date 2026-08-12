@@ -5,56 +5,16 @@ import Navigation from "./Navigation.astro";
 import Menu from "./Menu.astro";
 // import icon for light/dark mode
 import ThemeIcon from "./ThemeIcon.astro";
-// social import
-import Social from "./Social.astro";
 ---
 
-<header>
-    <nav>
-        <!-- Put a logo or something here -->
-        <!-- <h1 class="logo">PortJourney</h1> -->
-        <Navigation />
-        <Menu />
-        <ThemeIcon />
-    </nav>
+<header
+  class="border-b-4 border-(--tengu-red) bg-(--paper-white) px-4 py-2 shadow-[0_2px_8px_rgba(13,13,13,0.05)] dark:bg-(--sumi-black)"
+>
+  <nav class="ml-2 flex items-center justify-start gap-4">
+    <!-- Put a logo or something here -->
+    <!-- <h1 class="logo">PortJourney</h1> -->
+    <Navigation />
+    <Menu />
+    <ThemeIcon />
+  </nav>
 </header>
-
-<style>
-    header {
-        margin: 0;
-        padding: 0.5em 1em;
-        box-shadow: 0 2px 8px rgba(var(--Void), 5%);
-        border-bottom: 3px solid #cb2928;
-    }
-    h2 {
-        margin: 0;
-        font-size: 1em;
-    }
-
-    nav {
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
-    nav-links {
-        text-decoration: none;
-    }
-    .social-links,
-    .social-links a {
-        display: flex;
-        justify-content: center;
-    }
-    /* // Hiding menu @ Screen-size 720px */
-    @media (max-width: 720px) {
-        .social-links {
-            display: none;
-        }
-    }
-    /* Format the nav below screen 720px */
-    /* @media (min-width: 350px) (max-width: 719px) {
-        header {
-            border: 3px dashed var(--Void);
-        } */
-    /* } */
-</style>

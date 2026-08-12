@@ -8,80 +8,73 @@ const data = post?.data ?? {};
 ---
 
 <li class="blogCard">
-    <a href={`/posts/${post.id}/`} class="card-link">
-        <!-- Render hero image if provided. Use the Image component so both
+  <a href={`/posts/${post.id}/`} class="card-link">
+    <!-- Render hero image if provided. Use the Image component so both
          string URLs and Astro asset objects are handled. -->
-        {
-            data?.heroImage ? (
-                <Image
-                    class="card-image"
-                    src={data.heroImage}
-                    width={200}
-                    height={120}
-                    alt={data.title ?? ""}
-                />
-            ) : null
-        }
+    {
+      data?.heroImage ? (
+        <Image
+          class="card-image"
+          src={data.heroImage}
+          width={200}
+          height={120}
+          alt={data.title ?? ""}
+        />
+      ) : null
+    }
 
-        <div class="card-body">
-            <!-- //.card-image -->
-            <img class="card-image" />
-            <h4 class="card-title">{data?.title ?? "Untitled"}</h4>
-            {
-                data?.pubDate ? (
-                    <p class="card-date">
-                        {new Date(data.pubDate).toLocaleDateString()}
-                    </p>
-                ) : null
-            }
-            {
-                data?.description ? (
-                    <p class="card-desc">{data.description}</p>
-                ) : null
-            }
-        </div>
-    </a>
+    <div class="card-body">
+      <!-- //.card-image -->
+      <img class="card-image" />
+      <h4 class="card-title">{data?.title ?? "Untitled"}</h4>
+      {
+        data?.pubDate ? (
+          <p class="card-date">{new Date(data.pubDate).toLocaleDateString()}</p>
+        ) : null
+      }
+      {data?.description ? <p class="card-desc">{data.description}</p> : null}
+    </div>
+  </a>
 </li>
 
 <style>
-    .blogCard {
-        list-style: none;
-        border: 1px solid var(--sumi-black);
-        padding: 1em;
-        margin: 0.5em;
-        width: auto;
-    }
-    .card-link {
-        display: flex;
-        gap: 1rem;
-        text-decoration: none;
-        color: inherit;
-        padding: 0.5rem;
-    }
-    .card-image {
-        width: 200px;
-        height: 120px;
-        object-fit: cover;
-        flex-shrink: 0;
-        justify-content: flex-start;
-    }
-    .card-body {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        border: 1px solid red;
-    }
-    .card-title {
-        margin: 0 0 0.25rem 0;
-        font-size: 1.05rem;
-    }
-    .card-date {
-        margin: 0;
-        font-size: 0.85rem;
-        color: #666;
-    }
-    .card-desc {
-        margin-top: 0.5rem;
-        color: #333;
-    }
+  .blogCard {
+    list-style: none;
+    border: 1px solid var(--sumi-black);
+    padding: 1em;
+    margin: 0.5em;
+    width: auto;
+  }
+  .card-link {
+    display: flex;
+    gap: 1rem;
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem;
+  }
+  .card-image {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    flex-shrink: 0;
+    justify-content: flex-start;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  }
+  .card-title {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.05rem;
+  }
+  .card-date {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+  }
+  .card-desc {
+    margin-top: 0.5rem;
+    color: #333;
+  }
 </style>
