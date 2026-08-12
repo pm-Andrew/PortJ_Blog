@@ -3,15 +3,15 @@ import { getCollection, render } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
-    return posts.map((post) => ({
-        params: { slug: post.id },
-        props: { post },
-    }));
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
 }
 
 type Props = {
-    post: Awaited<ReturnType<typeof getCollection>>[number];
+  post: Awaited<ReturnType<typeof getCollection>>[number];
 };
 
 const { post } = Astro.props as Props;
@@ -19,5 +19,9 @@ const { Content } = await render(post);
 ---
 
 <MarkdownPostLayout frontmatter={post.data}>
+  <div
+    class="border-2 border-(--border) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
+  >
     <Content />
+  </div>
 </MarkdownPostLayout>

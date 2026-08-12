@@ -14,14 +14,19 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
   {
     frontmatter?.Image?.url ? (
       <img
+        class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
         src={frontmatter.Image.url}
         width="300"
         alt={frontmatter.Image?.alt ?? ""}
       />
-    ) : null
+    ) : (
+      "Image Broken or Missing"
+    )
   }
 
-  <div>
+  <div
+    class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
+  >
     <!-- Show formatted date if available -->
     <p>{pubDate ? pubDate.toLocaleDateString() : ""}</p>
 
@@ -33,39 +38,29 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
         </p>
       ) : null
     }
-    {frontmatter?.author ? <p>Written by: {frontmatter.author}</p> : null}
+    {
+      frontmatter?.author ? (
+        <p>Written by: {frontmatter.author}</p>
+      ) : (
+        "Broken or Missing"
+      )
+    }
   </div>
 
   <!-- Tags: render only when an array with items exists -->
   {
     Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? (
-      <div class="tags">
+      <div class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
         {frontmatter.tags.map((tag: string) => (
-          <p class="tag">
+          <p class="text-2xl text-(--primary)">
             <a href={`/tags/${tag}`}>{tag}</a>
           </p>
         ))}
       </div>
-    ) : null
+    ) : (
+      "No tags available"
+    )
   }
 
   <slot />
 </BaseLayout>
-
-<style>
-  a {
-    color: #00539f;
-  }
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .tag {
-    margin: 0.25em;
-    border: dotted 1px #a1a1a1;
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: #f8fcfd;
-  }
-</style>
