@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import "../styles/global.css";
 // using a BaseLayout for
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import { Image as AstroImage } from "astro:assets";
 // import BlogCard component (used to render post previews)
 import BlogCard from "../components/BlogCard.astro";
 
@@ -33,15 +33,14 @@ const pageTitle = "Blog";
     featured ? (
       <section class="border-2 border-(--accent) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
         <a href={`/posts/${featured.id}/`}>
-          {featured.data?.image ? (
-            <Image
+          {featured.data.image && (
+            <AstroImage
+              width={400}
+              height={350}
               src={featured.data.image.src}
-              alt={featured.data.image.alt}
-              class="border-2 border-(--border) rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
-              width={420}
-              height={240}
+              alt={featured.data.image.alt ?? ""}
             />
-          ) : null}
+          )}
           <div class="p-4 m-4">
             <h3>{featured.data?.title}</h3>
             {featured.data?.pubDate ? (

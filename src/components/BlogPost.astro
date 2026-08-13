@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 // Destructure props for clarity and easier access
-const { title, url, pubDate, description, Image } = Astro.props;
+const { title, url, pubDate, description } = Astro.props;
 
 // This is what is shown on the blog page. It is a list of all the posts in the blog collection.
 // Each post is a link to the post page. The post page is generated from the markdown file in the blog collection.
@@ -21,8 +21,13 @@ const { title, url, pubDate, description, Image } = Astro.props;
       posts.map((post) => (
         <li class="bg-(--card) border-2 border-(--border) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
           <a href={`/posts/${post.id}/`}>
-            {post.data.Image && (
-              <AstroImage width={400} height={350} src={post.data.Image} alt="" />
+            {post.data.image && (
+              <AstroImage
+                width={400}
+                height={350}
+                src={post.data.image.src}
+                alt={post.data.image.alt ?? ""}
+              />
             )}
             <div class="flex items-center justify-between">
               <h2 class="text-2xl m-2 my-3">{post.data.title}</h2>

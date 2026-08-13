@@ -13,13 +13,13 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
 <BaseLayout pageTitle={frontmatter?.title ?? "Blog"}>
   <!-- Render Image only when present to avoid runtime errors -->
   {
-    frontmatter?.Image?.src ? (
+    frontmatter?.image?.src ? (
       <img
         class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
-        src={frontmatter.Image.src}
+        src={frontmatter.image.src}
         width={300}
         height={200}
-        alt={frontmatter.Image?.alt ?? ""}
+        alt={frontmatter.image?.alt ?? ""}
       />
     ) : (
       "Image Broken or Missing"
