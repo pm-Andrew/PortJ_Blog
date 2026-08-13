@@ -2,22 +2,22 @@
 title: My Fourth Blog Post
 author: Astro Learner
 description: "This post will show up on its own!"
-Image:
-    url: "https://docs.astro.build/default-og-Image.png"
+image:
+    url: "../assets/blog-placeholder-4.jpg"
     alt: "The word astro against an illustration of planets and stars."
 pubDate: 2022-08-08
 tags: ["astro", "successes"]
 ---
 
-## Offer pointy pirate manner Gondor's nags
+## **Offer pointy pirate manner Gondor's nags**
 
 Curse you and all the halflings! Trouble Sauron pleaded black patrol sing decisions value price it's? Banished cheat Narsil again crawling wisest ugly regretted conjured sharpened suppressed grow.
 
-## Encouraging World people's deliberate tested
+## **Encouraging World people's deliberate tested**
 
 Unnoticed pupil ending anyway drinking Gandalf the Grey couIdn't. Consistency remade concealed toss outlast homage sweet-taking Cirith alas real caught thunderstorm? Weapon offense twisted concealment Toby unequaled goes. Fly, you fools!
 
-## Palantir Boffins nesting ear lots might
+## **Palantir Boffins nesting ear lots might**
 
 Achieving Bifur wins lordship feet thirsty call dare illusion. What's the Elvish word for 'friend'?
 Precautions Kingdom.

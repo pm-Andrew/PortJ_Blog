@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import { Image } from "astro:assets";
 
 // Extract frontmatter safely from Astro.props. Use optional chaining so
 // missing frontmatter doesn't crash the prerender step on Netlify.
@@ -12,11 +13,12 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
 <BaseLayout pageTitle={frontmatter?.title ?? "Blog"}>
   <!-- Render Image only when present to avoid runtime errors -->
   {
-    frontmatter?.Image?.url ? (
+    frontmatter?.Image?.src ? (
       <img
         class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
-        src={frontmatter.Image.url}
-        width="300"
+        src={frontmatter.Image.src}
+        width={300}
+        height={200}
         alt={frontmatter.Image?.alt ?? ""}
       />
     ) : (

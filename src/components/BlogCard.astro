@@ -13,12 +13,12 @@ const data = post?.data ?? {};
          string URLs and Astro asset objects are handled. -->
     {
       data?.Image ? (
-        <Image
+        <img
           class="card-image"
-          src={data.Image}
+          src={data.Image.url}
           width={200}
           height={120}
-          alt={data.title ?? ""}
+          alt={data.Image.alt ?? data.title ?? ""}
         />
       ) : null
     }
