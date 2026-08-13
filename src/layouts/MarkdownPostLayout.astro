@@ -14,12 +14,12 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
   <!-- Render Image only when present to avoid runtime errors -->
   {
     frontmatter?.image?.src ? (
-      <img
-        class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
+      <Image
+        class="card-image"
         src={frontmatter.image.src}
-        width={300}
-        height={200}
-        alt={frontmatter.image?.alt ?? ""}
+        width={200}
+        height={120}
+        alt={frontmatter.image.alt ?? frontmatter.title ?? ""}
       />
     ) : (
       "Image Broken or Missing"

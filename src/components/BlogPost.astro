@@ -1,5 +1,5 @@
 ---
-import { Image as AstroImage } from "astro:assets";
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 //
 import FormattedDate from "./FormattedDate.astro";
@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 // Destructure props for clarity and easier access
-const { title, url, pubDate, description } = Astro.props;
+const { post } = Astro.props;
 
 // This is what is shown on the blog page. It is a list of all the posts in the blog collection.
 // Each post is a link to the post page. The post page is generated from the markdown file in the blog collection.
@@ -22,11 +22,12 @@ const { title, url, pubDate, description } = Astro.props;
         <li class="bg-(--card) border-2 border-(--border) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
           <a href={`/posts/${post.id}/`}>
             {post.data.image && (
-              <AstroImage
-                width={400}
-                height={350}
+              <Image
+                class="card-image"
                 src={post.data.image.src}
-                alt={post.data.image.alt ?? ""}
+                width={200}
+                height={120}
+                alt={post.data.image.alt ?? post.data.title ?? ""}
               />
             )}
             <div class="flex items-center justify-between">
