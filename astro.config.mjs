@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   integrations: [preact()],
-  site: 'https://portjblog.netflify.app',
+  site: 'https://portjblog.netlify.app',
 
   vite: {
     plugins: [tailwindcss()],

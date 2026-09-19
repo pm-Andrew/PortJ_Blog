@@ -15,7 +15,9 @@ const { post } = Astro.props;
 // Each post is a link to the post page. The post page is generated from the markdown file in the blog collection.
 ---
 
-<section>
+<section
+  class="m-8 p-2 text-(--sumi-black) font-bold font-mono rounded-2xl border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)] bg-linear-to-r from-(--primary)/85 to-(--accent)/95 to-80% dark:bg-linear-to-r dark:from-(--primary)/85 dark:to-(--accent)/75 dark:to-90%"
+>
   <ul>
     {
       posts.map((post) => (

@@ -31,8 +31,11 @@ const pageTitle = "Blog";
   <!-- Featured section: show the most recent post in a larger format -->
   {
     featured ? (
-      <section class="border-2 border-(--accent) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
-        <a href={`/posts/${featured.id}/`}>
+      <section class="m-2 p-4 border-2 border-(--accent) rounded-lg">
+        <a
+          class="flex flex-col md:flex-row gap-4 border-2 border-(--accent) rounded-lg p-4 m-4"
+          href={`/posts/${featured.id}/`}
+        >
           {featured.data.image && (
             <Image
               width={250}
@@ -41,7 +44,7 @@ const pageTitle = "Blog";
               alt={featured.data.image.alt ?? ""}
             />
           )}
-          <div class="p-4 m-4">
+          <div class="p-4 m-4 items-start justify-start border-2 border-(--accent) rounded-lg">
             <h3>{featured.data?.title}</h3>
             {featured.data?.pubDate ? (
               <p class="date">
