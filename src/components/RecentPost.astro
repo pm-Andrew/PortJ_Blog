@@ -1,20 +1,8 @@
 ---
-// Collections
-import { getCollection } from "astro:content";
-//
-import FormattedDate from "./FormattedDate.astro";
 // import BlogPost
 import BlogPost from "./BlogPost.astro";
-// import global CSS
-import "../styles/global.css";
-//
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+
+// Keep the home-page entry point separate while BlogPost owns the collection list.
 ---
 
-<section
-  class="m-8 p-2 text-(--mist) font-bold font-mono rounded-2xl border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)] bg-linear-to-r from-(--primary)/85 to-(--accent)/95 to-80% dark:bg-linear-to-r dark:from-(--primary)/85 dark:to-(--accent)/75 dark:to-90%"
->
-  <BlogPost />
-</section>
+<BlogPost />

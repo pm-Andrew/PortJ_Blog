@@ -1,45 +1,37 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogPost from "../../components/BlogPost.astro";
+import BlogCard from "../../components/BlogCard.astro";
 
 export async function getStaticPaths() {
-    // Use a glob that targets the `src/blog` Markdown files so tag pages read
-    // the actual blog posts. This path is relative to this file.
-    const allPosts = Object.values(
-        import.meta.glob("../../blog/*.md", { eager: true }),
-    );
+  // Read posts through the validated content collection so tag pages stay
+  // aligned with the blog and post routes.
+  const posts = await getCollection("blog");
 
-    // Collect unique tags, using optional chaining and defaulting to [] so
-    // posts without a `tags` frontmatter don't cause an error.
-    const uniqueTags = [
-        ...new Set(
-            allPosts.map((post: any) => post.frontmatter?.tags ?? []).flat(),
-        ),
-    ];
+  // Generate one static page for every unique tag in the collection.
+  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
 
-    return uniqueTags.map((tag) => {
-        // Filter posts that include the current tag; guard missing tags.
-        const filteredPosts = allPosts.filter((post: any) =>
-            (post.frontmatter?.tags ?? []).includes(tag),
-        );
-        return {
-            params: { tag },
-            props: { posts: filteredPosts },
-        };
-    });
+  return uniqueTags.map((tag) => {
+    // Pass only the posts assigned to the current tag into that page.
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
+type Props = {
+  posts: CollectionEntry<"blog">[];
+};
+
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts } = Astro.props as Props;
 ---
 
 <BaseLayout pageTitle={tag}>
-    <p>Posts tagged with {tag}</p>
-    <ul>
-        {
-            posts.map((post: any) => (
-                <BlogPost url={post.url} title={post.frontmatter.title} />
-            ))
-        }
-    </ul>
+  <p>Posts tagged with {tag}</p>
+  <ul>
+    {posts.map((post) => <BlogCard post={post} />)}
+  </ul>
 </BaseLayout>

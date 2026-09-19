@@ -1,68 +1,19 @@
 ---
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-//
-import FormattedDate from "./FormattedDate.astro";
-// using a astro.props grab title and url from posts and create links in a
-// Collection in /blog.
+import BlogCard from "./BlogCard.astro";
+
+// Fetch and sort the blog collection once for the reusable post-list view.
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-// Destructure props for clarity and easier access
-const { post } = Astro.props;
 
-// This is what is shown on the blog page. It is a list of all the posts in the blog collection.
-// Each post is a link to the post page. The post page is generated from the markdown file in the blog collection.
+// Each BlogCard links to the generated post page and owns the single-post preview markup.
 ---
 
 <section
-  class="m-8 p-2 text-(--sumi-black) font-bold font-mono rounded-2xl border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)] bg-linear-to-r from-(--primary)/85 to-(--accent)/95 to-80% dark:bg-linear-to-r dark:from-(--primary)/85 dark:to-(--accent)/75 dark:to-90%"
+  class="m-8 p-2 text-(--sumi-black) font-bold font-mono rounded-2xl border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
 >
   <ul>
-    {
-      posts.map((post) => (
-        <li class="bg-(--card) border-2 border-(--border) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
-          <a href={`/posts/${post.id}/`}>
-            {post.data.image && (
-              <Image
-                class="card-image"
-                src={post.data.image.src}
-                width={200}
-                height={120}
-                alt={post.data.image.alt ?? post.data.title ?? ""}
-              />
-            )}
-            <div class="flex items-center justify-between">
-              <h2 class="text-2xl m-2 my-3">{post.data.title}</h2>
-              <p class="text-sm text-(--secondary)" />
-              <FormattedDate date={post.data.pubDate} />
-            </div>
-            <p class="description">{post.data.description}</p>
-          </a>
-        </li>
-      ))
-    }
+    {posts.map((post) => <BlogCard post={post} />)}
   </ul>
 </section>
-
-<style>
-  /* Blog Themes */
-
-  .blogCard {
-    margin: 2px;
-    padding: 3px;
-    display: flex;
-  }
-
-  .blogCard h4,
-  .blogCard p {
-    margin-left: 3em;
-    padding: 1em;
-    align-content: center;
-    justify-content: baseline;
-  }
-  .blogCard img {
-    height: 200px;
-    width: 350px;
-  }
-</style>
