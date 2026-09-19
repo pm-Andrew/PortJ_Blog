@@ -13,7 +13,7 @@ const data = post?.data ?? {};
          string URLs and Astro asset objects are handled. -->
     {
       data?.image ? (
-        <img
+        <Image
           class="card-image"
           src={data.image.src}
           width={200}
@@ -24,8 +24,6 @@ const data = post?.data ?? {};
     }
 
     <div class="card-body">
-      <!-- //.card-image -->
-      <img class="card-image" />
       <h4 class="card-title">{data?.title ?? "Untitled"}</h4>
       {
         data?.pubDate ? (

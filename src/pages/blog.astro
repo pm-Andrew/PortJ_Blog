@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import "../styles/global.css";
 // using a BaseLayout for
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image as AstroImage } from "astro:assets";
+import { Image } from "astro:assets";
 // import BlogCard component (used to render post previews)
 import BlogCard from "../components/BlogCard.astro";
 
@@ -34,9 +34,9 @@ const pageTitle = "Blog";
       <section class="border-2 border-(--accent) p-4 m-4 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
         <a href={`/posts/${featured.id}/`}>
           {featured.data.image && (
-            <AstroImage
-              width={400}
-              height={350}
+            <Image
+              width={250}
+              height={200}
               src={featured.data.image.src}
               alt={featured.data.image.alt ?? ""}
             />
