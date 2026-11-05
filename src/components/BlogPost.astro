@@ -10,9 +10,7 @@ const posts = (await getCollection("blog")).sort(
 // Each BlogCard links to the generated post page and owns the single-post preview markup.
 ---
 
-<section
-  class="m-8 p-2 text-(--sumi-black) font-bold font-mono rounded-2xl border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
->
+<section class="m-8 p-2 text-(--sumi-black) font-bold font-mono">
   <ul>
     {posts.map((post) => <BlogCard post={post} />)}
   </ul>

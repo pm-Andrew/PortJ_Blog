@@ -12,7 +12,9 @@ const { post } = Astro.props as Props;
 const { data } = post;
 ---
 
-<li class="blogCard">
+<li
+  class="blogCard rounded-2xl shadow-[0_2px_8px_rgba(13,13,13,0.05)] hover:underline"
+>
   <a href={`/posts/${post.id}/`} class="card-link">
     <!-- Render hero image if provided. Use the Image component so both
          string URLs and Astro asset objects are handled. -->
@@ -39,7 +41,7 @@ const { data } = post;
 <style>
   .blogCard {
     list-style: none;
-    border: 1px solid var(--sumi-black);
+    shadow: 0 2px 8px rgba(13, 13, 13, 0.05);
     padding: 1em;
     margin: 0.5em;
     width: auto;

@@ -10,8 +10,6 @@ import Social from "./Social.astro";
   font-bold
   font-mono
   rounded-2xl
-  border-2
-  border-(--border)
   shadow-[0_2px_8px_rgba(13,13,13,0.05)]
   bg-linear-to-r
   from-(--accent)
@@ -26,7 +24,20 @@ import Social from "./Social.astro";
   75
   dark:to-90%"
 >
-  <Social platform="linkedin" username="in/andrewsabourin" />
-  <Social platform="github" username="pm-Andrew" />
-  <Social platform="youtube" username="Fireship" />
+  <div class="my-2 flex gap-4">
+    <Social platform="linkedin" username="in/andrewsabourin" />
+    <Social platform="github" username="pm-Andrew" />
+  </div>
+  <!-- <Social platform="youtube" username="Fireship" /> -->
+  <div class="mt-4 text-(--sumi-black) font-normal text-sm">
+    <p>
+      &copy; {new Date().getFullYear()} Andrew Sabourin. All rights reserved.
+    </p>
+    <p>
+      Built with <a href="https://astro.build/" class="underline">Astro</a> and <a
+        href="https://tailwindcss.com/"
+        class="underline">Tailwind CSS</a
+      >.
+    </p>
+  </div>
 </footer>
