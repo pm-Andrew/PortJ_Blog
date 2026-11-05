@@ -26,9 +26,7 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
     )
   }
 
-  <div
-    class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]"
-  >
+  <div class="m-2 p-2 w-50 rounded-lg shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
     <!-- Show formatted date if available -->
     <p>{pubDate ? pubDate.toLocaleDateString() : ""}</p>
 
@@ -52,9 +50,9 @@ const pubDate = frontmatter?.pubDate ? new Date(frontmatter.pubDate) : null;
   <!-- Tags: render only when an array with items exists -->
   {
     Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? (
-      <div class="m-2 p-2 rounded-lg border-2 border-(--border) shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
+      <div class="m-2 p-2 rounded-lg w-50 shadow-[0_2px_8px_rgba(13,13,13,0.05)]">
         {frontmatter.tags.map((tag: string) => (
-          <p class="text-2xl text-(--primary)">
+          <p class="text-xl text-(--primary)">
             <a href={`/tags/${tag}`}>{tag}</a>
           </p>
         ))}
